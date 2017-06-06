@@ -5,12 +5,13 @@ using System.Web;
 
 namespace ApiCarRental
 {
-    public class RespuestaAPI
+    public class RespuestaAPI<T>
     {
         public int totalElementos { get; set; }
 
         public string error { get; set; }
 
-        public List<Coche> data { get; set; }
+        public List<T> data { get; set; }
+        
     }
 }
