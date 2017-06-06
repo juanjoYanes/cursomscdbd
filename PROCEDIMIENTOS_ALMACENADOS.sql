@@ -64,3 +64,10 @@ BEGIN
 	SELECT id, denominacion FROM Marcas 
 END
 
+CREATE PROCEDURE GET_MARCAS
+@id BigInt
+AS
+BEGIN
+	SELECT id, denominacion FROM Marcas 
+	WHERE Marcas.id = @id
+END
