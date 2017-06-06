@@ -1,12 +1,33 @@
 -- CREAMOS UN PROCEDIMIENTO ALMACENADO
-ALTER PROCEDURE GET_COCHE_POR_MARCA
+ALTER PROCEDURE [dbo].[GET_COCHE_POR_MARCA]
 AS
 BEGIN
+<<<<<<< HEAD
 	SELECT Coches.*, Marcas.denominacion as denominacionMarca, TiposCombustible.id as denominacionTipoCombustible
 	FROM Marcas
 		INNER JOIN Coches on Marcas.id = Coches.idMarca
 		INNER JOIN TiposCombustible TC on TC.id = Coches.idTipoCombustible 
+=======
+	SELECT Coches.*, 
+	Marcas.denominacion as denominacionMarca, 
+	TiposCombustible.denominacion as denominacionTipoCombustible
+	FROM Marcas
+		INNER JOIN Coches on Marcas.id = Coches.idMarca
+		INNER JOIN TiposCombustible on TiposCombustible.id = Coches.idTipoCombustible 
+>>>>>>> development
 	--PRINT 'MI PRIMER PROCEDIMIENTO ALMACENADO'
+END
+
+ALTER PROCEDURE [dbo].[GET_COCHE_POR_MARCA_ID]
+@id int
+AS
+BEGIN
+	SELECT Coches.*, Marcas.denominacion as denominacionMarca, TiposCombustible.denominacion as denominacionTipoCombustible
+	FROM Marcas
+		INNER JOIN Coches on Marcas.id = Coches.idMarca
+		INNER JOIN TiposCombustible on TiposCombustible.id = Coches.idTipoCombustible
+	WHERE Coches.id = @id 
+	
 END
 
 -- PROCEDIMIENTO PARA EL EJERCICIO DEL VIERNES 02/06
@@ -42,3 +63,11 @@ BEGIN
 	and	(C.nPlazas >= @nPlazas OR @nPlazas is null)
 	ORDER BY nPlazas
 END
+
+-- PROCEDIMIENTO PARA OBTENER LA LISTA DE MARCAS
+CREATE PROCEDURE GET_MARCAS
+AS
+BEGIN
+	SELECT id, denominacion FROM Marcas 
+END
+
