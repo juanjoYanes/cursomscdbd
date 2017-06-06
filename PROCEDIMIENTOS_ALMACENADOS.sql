@@ -2,9 +2,10 @@
 ALTER PROCEDURE GET_COCHE_POR_MARCA
 AS
 BEGIN
-	SELECT Coches.*, Marcas.denominacion as denominacionMarca
+	SELECT Coches.*, Marcas.denominacion as denominacionMarca, TiposCombustible.id as denominacionTipoCombustible
 	FROM Marcas
 		INNER JOIN Coches on Marcas.id = Coches.idMarca
+		INNER JOIN TiposCombustible TC on TC.id = Coches.idTipoCombustible 
 	--PRINT 'MI PRIMER PROCEDIMIENTO ALMACENADO'
 END
 

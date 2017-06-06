@@ -14,7 +14,7 @@ namespace ApiCarRental
             try
             {
                 // PREPARO LA CADENA DE CONEXIÓN A LA BD
-                string cadenaConexion = @"Server=.\sqlexpress;
+                string cadenaConexion = @"Server=.\sqlexpress2;
                                           Database=carrental;
                                           User Id=testuser;
                                           Password=!Curso@2017;";
