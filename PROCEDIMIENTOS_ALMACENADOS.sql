@@ -2,12 +2,19 @@
 ALTER PROCEDURE [dbo].[GET_COCHE_POR_MARCA]
 AS
 BEGIN
+<<<<<<< HEAD
+	SELECT Coches.*, Marcas.denominacion as denominacionMarca, TiposCombustible.id as denominacionTipoCombustible
+	FROM Marcas
+		INNER JOIN Coches on Marcas.id = Coches.idMarca
+		INNER JOIN TiposCombustible TC on TC.id = Coches.idTipoCombustible 
+=======
 	SELECT Coches.*, 
 	Marcas.denominacion as denominacionMarca, 
 	TiposCombustible.denominacion as denominacionTipoCombustible
 	FROM Marcas
 		INNER JOIN Coches on Marcas.id = Coches.idMarca
 		INNER JOIN TiposCombustible on TiposCombustible.id = Coches.idTipoCombustible 
+>>>>>>> development
 	--PRINT 'MI PRIMER PROCEDIMIENTO ALMACENADO'
 END
 
@@ -64,10 +71,25 @@ BEGIN
 	SELECT id, denominacion FROM Marcas 
 END
 
-CREATE PROCEDURE GET_MARCAS
+CREATE PROCEDURE GET_MARCAS_POR_ID
 @id BigInt
 AS
 BEGIN
 	SELECT id, denominacion FROM Marcas 
 	WHERE Marcas.id = @id
+END
+
+-- PROCEDIMIENTOS PARA LA TABLA TIPOS COMBUSTIBLES
+CREATE PROCEDURE GET_TIPOS_COMBUSTIBLE
+AS
+BEGIN
+	SELECT id, denominacion FROM TiposCombustible
+END
+
+CREATE PROCEDURE GET_TIPOS_COMBUSTIBLE_ID
+@id Bigint
+AS
+BEGIN
+	SELECT id, denominacion FROM TiposCombustible
+	WHERE id = @id
 END
