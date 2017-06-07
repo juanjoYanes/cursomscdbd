@@ -419,11 +419,7 @@ namespace ApiCarRental
         {
             List<TipoCombustible> resultados = new List<TipoCombustible>();
 
-<<<<<<< HEAD
             string nombreProcedimiento = "dbo.GET_TIPOS_COMBUSTIBLE_ID";
-=======
-            string nombreProcedimiento = "GET_TIPOS_COMBUSTIBLE_ID";
->>>>>>> master
 
             SqlCommand cmd = new SqlCommand(nombreProcedimiento, conexion);
 
