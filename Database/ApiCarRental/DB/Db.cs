@@ -392,5 +392,58 @@ namespace ApiCarRental
             
             return resultado;
         }
+        public static List<TipoCombustible> DameTiposCombustible()
+        {
+            List<TipoCombustible> resultados = new List<TipoCombustible>();
+
+            string nombreProcedimiento = "dbo.GET_TIPOS_COMBUSTIBLE";
+
+            SqlCommand cmd = new SqlCommand(nombreProcedimiento, conexion);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                TipoCombustible tipoCombustible = new TipoCombustible();
+
+                tipoCombustible.id = (long)reader["id"];
+                tipoCombustible.denominacion = reader["denominacion"].ToString();
+
+                resultados.Add(tipoCombustible);
+            }
+            return resultados;
+        }
+
+        public static List<TipoCombustible> DameTipoCombustible(long id)
+        {
+            List<TipoCombustible> resultados = new List<TipoCombustible>();
+
+            string nombreProcedimiento = "dbo.GET_TIPOS_COMBUSTIBLE_ID";
+
+            SqlCommand cmd = new SqlCommand(nombreProcedimiento, conexion);
+
+            cmd.CommandType = CommandType.StoredProcedure;
+            SqlParameter parametroId = new SqlParameter();
+            parametroId.ParameterName = "id";
+            parametroId.SqlDbType = SqlDbType.BigInt;
+            parametroId.SqlValue = id;
+
+            cmd.Parameters.Add(parametroId);
+
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                TipoCombustible tipoCombustible = new TipoCombustible();
+
+                tipoCombustible.id = (long)reader["id"];
+                tipoCombustible.denominacion = reader["denominacion"].ToString();
+
+                resultados.Add(tipoCombustible);
+            }
+
+            return resultados;
+        }
     }
 }
