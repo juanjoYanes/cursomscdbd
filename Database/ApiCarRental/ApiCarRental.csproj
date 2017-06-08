@@ -110,10 +110,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
+    <Content Include="Views\addMarca.html" />
+    <Content Include="Views\addTipoCombustible.html" />
     <Content Include="Views\coches.html" />
+    <Content Include="Views\css\main.css" />
     <Content Include="Views\index.html" />
     <Content Include="Views\js\coches.js" />
     <Content Include="Views\js\combustibles.js" />
+    <Content Include="Views\js\main.js" />
     <Content Include="Views\js\marcas.js" />
     <Content Include="Views\marcas.html" />
     <Content Include="Views\combustibles.html" />
@@ -150,7 +154,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\css\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

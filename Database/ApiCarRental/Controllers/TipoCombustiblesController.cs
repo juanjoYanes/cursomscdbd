@@ -58,8 +58,29 @@ namespace ApiCarRental.Controllers
         }
 
         // POST: api/TipoCombustibles
-        public void Post([FromBody]string value)
+        [HttpPost]
+        public IHttpActionResult Post([FromBody] TipoCombustible tipoCombustible)
         {
+            RespuestaAPI<TipoCombustible> respuesta = new RespuestaAPI<TipoCombustible>();
+            respuesta.error = "";
+            int filasAfectadas = 0;
+
+            try
+            {
+                Db.Conectar();
+                if (Db.EstaLaConexionAbierta())
+                {
+                    filasAfectadas = Db.AgregarTipoCombustible(tipoCombustible);
+                }
+                respuesta.totalElementos = filasAfectadas;
+                Db.Desconectar();
+            }
+            catch (Exception e)
+            {
+                respuesta.totalElementos = 0;
+                respuesta.error = "Error al agregar el tipo de combustible";
+            }
+            return Ok(respuesta);
         }
 
         // PUT: api/TipoCombustibles/5

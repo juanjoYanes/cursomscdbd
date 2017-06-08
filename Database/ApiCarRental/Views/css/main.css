@@ -1,8 +1,9 @@
-﻿.menu {
+﻿#menu {
     border: 1px solid red;
+    width: 30%;
 }
 
-.content {
+#content {
     border: 1px solid green;
     float: left;
 }

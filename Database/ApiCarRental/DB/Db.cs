@@ -365,7 +365,6 @@ namespace ApiCarRental
             }
             return resultado;
         }
-
         public static List<Marca> DameMarca(long id)
         {
             List<Marca> resultado = new List<Marca>();
@@ -414,7 +413,6 @@ namespace ApiCarRental
             }
             return resultados;
         }
-
         public static List<TipoCombustible> DameTipoCombustible(long id)
         {
             List<TipoCombustible> resultados = new List<TipoCombustible>();
@@ -444,6 +442,40 @@ namespace ApiCarRental
             }
 
             return resultados;
+        }
+        public static int AgregarMarca(Marca marca)
+        {
+            string procedimiento = "dbo.AGREGAR_MARCA";
+
+            SqlCommand cmd = new SqlCommand(procedimiento, conexion);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            SqlParameter parametroDenominacion = new SqlParameter();
+            parametroDenominacion.ParameterName = "denominacion";
+            parametroDenominacion.SqlDbType = SqlDbType.NVarChar;
+            parametroDenominacion.Value = marca.denominacion;
+
+            cmd.Parameters.Add(parametroDenominacion);
+            int filasAfectadas = cmd.ExecuteNonQuery();
+            
+            return filasAfectadas;
+        }
+        public static int AgregarTipoCombustible(TipoCombustible tipoCombustible)
+        {
+            string procedimiento = "dbo.AGREGAR_TIPOCOMBUSTIBLE";
+
+            SqlCommand cmd = new SqlCommand(procedimiento, conexion);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            SqlParameter parametroDenominacion = new SqlParameter();
+            parametroDenominacion.ParameterName = "denominacion";
+            parametroDenominacion.SqlDbType = SqlDbType.NVarChar;
+            parametroDenominacion.Value = tipoCombustible.denominacion;
+
+            cmd.Parameters.Add(parametroDenominacion);
+            int filasAfectadas = cmd.ExecuteNonQuery();
+
+            return filasAfectadas;
         }
     }
 }
