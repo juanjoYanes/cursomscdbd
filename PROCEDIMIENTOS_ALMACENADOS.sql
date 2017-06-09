@@ -72,7 +72,7 @@ BEGIN
 END
 
 CREATE PROCEDURE GET_MARCAS_POR_ID
-@id BigInt
+	@id BigInt
 AS
 BEGIN
 	SELECT id, denominacion FROM Marcas 
@@ -87,9 +87,29 @@ BEGIN
 END
 
 CREATE PROCEDURE GET_TIPOS_COMBUSTIBLE_ID
-@id Bigint
+	@id Bigint
 AS
 BEGIN
 	SELECT id, denominacion FROM TiposCombustible
 	WHERE id = @id
+END
+
+-- PROCEDIMIENTO ACTUALIZACION MARCA
+CREATE PROCEDURE ACTUALIZA_MARCA
+	@id BigInt,
+	@denominacion nvarchar(50)
+AS
+BEGIN
+	UPDATE Marcas
+    SET denominacion = @denominacion
+    WHERE id = @id
+END
+
+-- PROCEDIMIENTO PARA BORRAR MARCA
+CREATE PROCEDURE BORRA_MARCA
+	@id BigInt
+AS
+BEGIN
+	DELETE FROM Marcas
+	WHERE id = @id 
 END
