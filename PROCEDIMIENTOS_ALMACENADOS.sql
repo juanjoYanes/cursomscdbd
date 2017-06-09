@@ -107,7 +107,11 @@ END
 
 -- PROCEDIMIENTO PARA BORRAR MARCA
 CREATE PROCEDURE BORRA_MARCA
+<<<<<<< HEAD
 @id BigInt
+=======
+	@id BigInt
+>>>>>>> master
 AS
 BEGIN
 	DELETE FROM Marcas
